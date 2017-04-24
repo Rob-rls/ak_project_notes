@@ -13,7 +13,7 @@
   - `CMD` default command to run if no command given when starting an image.
 
 ## Docker Compose
-- Start containters (requires a docker-compose.yml)
+- Start containers (requires a docker-compose.yml)
   - `docker-compose up -d` (-d to run in background)
 - Execute a script on a runing container
   - `docker-compse exec <appname> <path/to/script/on/container.sh>`
