@@ -17,6 +17,7 @@
   - `docker-compose up -d` (-d to run in background)
 - Execute a script on a runing container
   - `docker-compse exec <appname> <path/to/script/on/container.sh>`
+- `-u 0` when running or shelling into a container to run as root
 
 ## CI
 - Start Vagrant
@@ -42,6 +43,8 @@
 ## Cloud Foundry
 - see apps
   - `cf apps`
+- create a space
+  - `cf create-space <name-of-space>`
 - deploy app `cf push` - must be in the project directory
 - view logs `cf logs <app name> --recent`
 - environment variables
@@ -64,3 +67,16 @@
   - map the route to the app `cf map-route`
 - Deploying non-web components (workers, etc..)
   - `cf push <app name> --no-route -u none -f <path to manifest>`
+
+## Bosh-lite
+- *** IMPORTANT *** run `vangrant halt` for the bosh-lite VM before shutting down the computer
+- installing
+  https://github.com/cloudfoundry/bosh-lite/blob/master/README.md
+- check the status of the current deployment vms
+  - bosh cloudcheck
+    - this checks each vm and suggests solutions based on what it finds
+- `bosh ssh <vm>` - shell into the vm
+  - within the VM:
+  - `sudo su` - required to make changes
+  - `monit summary` - show list of running processes
+  - `monit restart <process name>` - on any failed process to try to stand up again
